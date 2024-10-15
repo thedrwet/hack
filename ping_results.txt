@@ -1,0 +1,18 @@
+Hostname: google.com
+Status: Success
+Packets Sent: 4
+Packets Received: 4
+Packet Loss (%): 0.00
+
+Hostname: amazonprimegaming.com
+Status: Success
+Packets Sent: 4
+Packets Received: 4
+Packet Loss (%): 0.00
+
+Hostname: fbabfbfajfbjaf.com
+Status: Failure
+Packets Sent: 0
+Packets Received: 0
+Packet Loss (%): 100
+

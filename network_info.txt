@@ -1,0 +1,11 @@
+IP Addresses Visited:
+192.168.29.137
+127.0.0.1
+
+MAC Addresses:
+94-BB-43-42-98-5A
+28-C5-C8-60-52-13
+94-BB-43-42-98-5B
+
+DNS Server Information:
+DNS Servers . . . . . . . . . . . : 2405:201:a004:7276::c0a8:1d01
