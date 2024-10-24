@@ -26,7 +26,7 @@ def save_to_csv(file_data, output_file):
         writer.writerows(file_data)
 
 if __name__ == "__main__":
-    root_directory = "/d:/hackkathon/hack/fileintegrity"  # Change this to your target directory
+    root_directory = "d:/hackkathon/hack/fileintegrity" # Change this to your target directory
     file_data = list_files_and_hashes(root_directory)
     timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
     output_csv = f"file_integrity_{timestamp}.csv"
