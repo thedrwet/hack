@@ -4,8 +4,8 @@ IP Addresses Visited:
 
 MAC Addresses:
 94-BB-43-42-98-5A
-28-C5-C8-60-52-13
+28-C5-C8-43-FC-39
 94-BB-43-42-98-5B
 
 DNS Server Information:
-DNS Servers . . . . . . . . . . . : 2405:201:a004:7276::c0a8:1d01
+DNS Servers . . . . . . . . . . . : 2405:201:a004:7a0d::c0a8:1d01

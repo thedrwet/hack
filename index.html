@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Viewer</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        #file-list, #file-content {
+            margin-top: 20px;
+            white-space: pre-wrap;
+            font-size: 16px;
+            color: #333;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 80%;
+            max-width: 600px;
+            overflow-wrap: break-word;
+        }
+        .file-item {
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>File Viewer</h1>
+    <button onclick="fetchFileList()">View Files</button>
+    <div id="file-list">Click the button to view the files in the directory.</div>
+    <div id="file-content"></div>
+
+    <script>
+        function fetchFileList() {
+            fetch('/list-files')
+                .then(response => response.json())
+                .then(data => {
+                    const fileListDiv = document.getElementById('file-list');
+                    if (data.files) {
+                        fileListDiv.innerHTML = '';
+                        data.files.forEach(file => {
+                            const fileItem = document.createElement('div');
+                            fileItem.textContent = file;
+                            fileItem.className = 'file-item';
+                            fileItem.onclick = () => fetchFileContent(file);
+                            fileListDiv.appendChild(fileItem);
+                        });
+                    } else if (data.error) {
+                        fileListDiv.textContent = `Error: ${data.error}`;
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('file-list').textContent = `Error: ${error}`;
+                });
+        }
+
+        function fetchFileContent(filename) {
+            fetch(`/file-content?filename=${encodeURIComponent(filename)}`)
+                .then(response => response.json())
+                .then(data => {
+                    const fileContentDiv = document.getElementById('file-content');
+                    if (data.content) {
+                        fileContentDiv.textContent = data.content;
+                    } else if (data.error) {
+                        fileContentDiv.textContent = `Error: ${data.error}`;
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('file-content').textContent = `Error: ${error}`;
+                });
+        }
+    </script>
+</body>
+</html>
